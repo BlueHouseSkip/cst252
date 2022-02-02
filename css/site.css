@@ -57,6 +57,10 @@ h1 {
   width: 100%;
 }
 
+#construction {
+  width: 20%;
+}
+
 /* Most specific at bottom of each section */
 
 #sidebar {
