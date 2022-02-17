@@ -168,7 +168,7 @@ black;
                   scoreObj = new Text(SCORE, "15pt Helvetica");
                   scoreObj.setColor(Color.black);
                   scoreObj.setPosition(getWidth()-5-scoreObj.getWidth(), getHeight()-5);
-                  add(scoreObj);
+                  //add(scoreObj);
 
                   // Create player
                   playerObj = createTank(TANK_WIDTH, TANK_HEIGHT, PLR_BASE_COLOR, 0, 0, 5, TANK_HEIGHT*0.6, PLR_TURRET_COLOR, true);
@@ -281,9 +281,9 @@ black;
               function updateScore() {
                   // Always keep the score on top of everything else
                   scoreObj.setPosition(getWidth()-5-scoreObj.getWidth(), getHeight()-5);
-                  add(scoreObj);
-                  remove(scoreObj);
-                  add(scoreObj);
+                  //add(scoreObj);
+                  //remove(scoreObj);
+                  //add(scoreObj);
                   var __score = parseInt(scoreObj.getLabel());
                   if(__score < SCORE) {
                       scoreObj.setText(__score+1+Math.floor(easyFrac(1, 25, SCORE - __score)));
@@ -423,7 +423,10 @@ black;
                       playerObj.hitStep = STEPS;
                       --LIVES;
                       playerObj.livesCounter.setLabel(LIVES);
-                      if(LIVES < 1 && playerObj.hitStep < STEPS - GAME_OVER_DELAY) gameOver();
+                      if(LIVES < 1) { // && playerObj.hitStep < STEPS - GAME_OVER_DELAY
+                        console.log("game over!");
+                        gameOver();
+                      }
                   }
               }
 
