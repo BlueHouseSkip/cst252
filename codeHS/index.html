@@ -39,11 +39,11 @@ black;
                * What I Need:
                * - Multi-Purpose Movement Script  |
                * - Player Input Interpreter       |
-               * - Opponent AI                    |
+               * - Opponent AI                    X
                * - Multi-Purpose Collisions       |
                * - Projectile Interpreting        |
-               * - Main Menu / Restart            |
-               * - Image Import Function          |
+               * - Main Menu / Restart            X
+               * - Image Import Function          X
                * - Random Area Generator          |
                * - Enemy Placement Script         |
                *
@@ -96,7 +96,7 @@ black;
               const PROJ_RADIUS = 5;
               const PROJ_COLOR1 = Color.red;
               const PROJ_COLOR2 = Color.yellow;
-              const PROJ_SPEED = 3.2; // MUST BE A WHOLE NUMBER
+              const PROJ_SPEED = 3.2; // MUST BE A WHOLE NUMBER. Later note: its working so apparently not.
               const PROJ_BUFFER = 1;
               const PROJ_FUSE = 100; // How long until the projectile destroys itself
 
@@ -255,7 +255,9 @@ black;
                   }
                   playerObj.hitStep = STEPS; // Give player I-frames at the beginning of the level
               }
-
+              // Stores the input as a set of 4 binaries designating which of the arrow keys are pressed.
+              // This is done so that all input can be considered and diagonals can be done.
+              // In keyDown(), the input is added to the inputBin and in keyUp() it is removed from the inputBin
               function keyDown(e) {
                   var startStep = new Array(Keyboard.LEFT, Keyboard.RIGHT, Keyboard.UP, Keyboard.DOWN);
                   if(startStep.join('').includes(e.keyCode)) {
@@ -596,7 +598,7 @@ black;
                   __obj.collideArr.forEach(function (element, index) {
                       var foundObj = getWallUnderProj(element.x, element.y);
                       if(foundObj !== null && foundObj !== undefined) {
-                          if(foundObj.color === WALL_COLOR) { // If the object is orange it sees it as a wall
+                          if(foundObj.color === WALL_COLOR) { // If the object is WALL_COLOR it sees it as a wall
                               if(returnAngle) __rtn.push(__obj.collideAngleArr[index]); // Angle is used to determine where to move away from
                               else __rtn.push(true);
                           } else if(foundObj.color === EXIT_BG_COLOR || foundObj.color === EXIT_STAIRS_COLOR) {
@@ -613,6 +615,7 @@ black;
               }
 
               function getCollision(__obj) {
+                // Gets the points at which collision will be tested.
                   __obj.collideArr = getCirclePoints(__obj.pos.x, __obj.pos.y, __obj.collisionRadius,1,1);
               }
 
