@@ -2,10 +2,40 @@
 
 /*stolen from Wes Modes*/
 
+
 html, body {
-  background-color: plum;
+  /* background-color: plum; */
   /* background-image: url("../img/tv-eye.gif"); */
+  /*background:linear-gradient(90deg, Red, Orange, Yellow, Green, Blue, Indigo,violet); */
+/*  width:500px;
+  height:500px; */
 }
+
+body {
+  animation: 60s ease-in-out infinite color-change;
+}
+
+@keyframes color-change {
+  0% {
+    background-color: teal;
+  }
+  20% {
+    background-color: gold;
+  }
+  40% {
+    background-color: indianred;
+  }
+  60% {
+    background-color: violet;
+  }
+  80% {
+    background-color: green;
+  }
+  100% {
+    background-color: teal;
+  }
+}
+
 
 .content {
     display: inline-block;
@@ -13,6 +43,7 @@ html, body {
     margin: 20px;
     padding: 10px;
 }
+
 
 
 
@@ -84,6 +115,7 @@ nav {
 nav a {
   color: white;
 }
+
 
 /* iframe! */
 
