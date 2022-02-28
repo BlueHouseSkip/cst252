@@ -90,7 +90,7 @@ black;
               const TANK_HEIGHT= CELL_HEIGHT*0.45;
               const TURN_SPEED = 10; //in degrees per step
               const MOVE_SPEED = 1.5; //in x,y per step
-              const COLLIDE_BUFFER = 1;
+              const COLLIDE_BUFFER = 1; // space between the collision points and the actual collider. cannot be zero or will collide with itself
 
               // Projectile Globals
               const PROJ_RADIUS = 5;
@@ -158,7 +158,7 @@ black;
                   // createExit(); For quick switching between levels;
 
                   // A simple message to the player about the game.
-                  print("Welcome to my tank game. v3.08\n * Use the arrow keys to move your tank\n * Use the mouse to aim your tank's gun.\n * Left click to fire.\n");
+                  print("Welcome to my tank game. v3.09\n * Use the arrow keys to move your tank\n * Use the mouse to aim your tank's gun.\n * Left click to fire.\n");
                   print("You have 3 lives, try to get the highest score! \nKill all the enemies to go to the next level.\n");
 
                   var maze = newMaze(MAP_COLS,MAP_ROWS);
@@ -284,12 +284,14 @@ black;
                   // Always keep the score on top of everything else
                   scoreObj.setPosition(getWidth()-5-scoreObj.getWidth(), getHeight()-5);
                   //add(scoreObj);
-                  //remove(scoreObj);
-                  //add(scoreObj);
+                  remove(scoreObj);
+                  add(scoreObj);
+                  
                   var __score = parseInt(scoreObj.getLabel());
                   if(__score < SCORE) {
                       scoreObj.setText(__score+1+Math.floor(easyFrac(1, 25, SCORE - __score)));
                   }
+
               }
 
               function gameOver() {
