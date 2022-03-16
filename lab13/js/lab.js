@@ -7,18 +7,26 @@
 
 
 //
-for(let i=0;i<$(".rainbow-toggle").length;i++) {
-  $(".rainbow-toggle").eq(i).click(function () {
-      $(".rainbow-toggle").eq(i).parent().toggleClass("rainbow-text");
-    });
+//non-copyright infinging names
+function sortingCap(name) {
+  let nameMod = name.length % 4;
+  let houseStr;
+  if        (nameMod == 0) {
+    houseStr = "Sphinxian";
+  } else if (nameMod == 1) {
+    houseStr = "Chimeratan";
+  } else if (nameMod == 2) {
+    houseStr = "Mantichore";
+  } else if (nameMod == 3) {
+    houseStr = "Kelpiasht";
+  }
+  return houseStr;
 }
 
+$("#go-button").click(function() {
+  console.log("clicked");
+  let home = sortingCap($("#name-input"));
+  $("#home-output").text(home);
+});
+
 //Changes the color of the buttons to match the background color of the page every 50 miliseconds.
-function updateButtonColor() {
-  let color = $("body").css("background-color");
-  let textColor = $("#title").css("color");
-  $(".rainbow-toggle").css("background-color", color);
-  $(".rainbow-toggle").css("color", textColor);
-  return;
-};
-setInterval(updateButtonColor, 50);
