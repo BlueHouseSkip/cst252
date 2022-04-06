@@ -1,6 +1,6 @@
 <html>
         <head>
-            <title>Your Program Title</title>
+            <title>Tank Game</title>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
             <script type="text/javascript" src="https://static.codehs.com/gulp/80550f5fc4071985bfef352d04f005ca3de931d3/chs-js-lib/chs.js"></script>
             <script type="text/javascript" src="/js/codeHS.js"></script>
@@ -34,7 +34,7 @@ black;
 
         <script>
             window.onload = function() {
-              /* Top Down Tank Shooter v1.01
+              /* Top Down Tank Shooter v1.03
                *
                * What I Need:
                * - Multi-Purpose Movement Script  |
@@ -78,7 +78,7 @@ black;
               // FIX GAME OVER
 
               // Map globals
-              const MAP_ROWS = 5;
+              const MAP_ROWS = 6; //changing these will probably break something
               const MAP_COLS = 5;
               const WALL_WIDTH = 7;
               const CELL_WIDTH = easyFrac(1,MAP_COLS,getWidth());
@@ -103,7 +103,7 @@ black;
               // Enemy Globals
               const ENEMIES_PER_BOARD = 5;
               const ENEMY_WIDTH = CELL_WIDTH*0.40;
-              const ENEMY_HEIGHT=CELL_HEIGHT*0.35;
+              const ENEMY_HEIGHT=CELL_HEIGHT*0.40; //If changing the amount of rows, change this accordingly
               const ENEMY_ATTACK_RADIUS = 500;
               const ENEMY_FIRE_DELAY = 100; // how many steps before the enemy can fire again.
 
@@ -286,7 +286,7 @@ black;
                   //add(scoreObj);
                   remove(scoreObj);
                   add(scoreObj);
-                  
+
                   var __score = parseInt(scoreObj.getLabel());
                   if(__score < SCORE) {
                       scoreObj.setText(__score+1+Math.floor(easyFrac(1, 25, SCORE - __score)));
