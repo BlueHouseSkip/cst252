@@ -1,0 +1,33 @@
+var url = "https://cataas.com/cat?json=true";
+var domain = "https://cataas.com";
+
+function getAjax () {
+	// Using the core $.ajax() method
+  $.ajax({
+      // The URL for the request
+      url: url,
+      // The data to send (will be converted to a query string)
+      //data: { id: 123},
+      // Whether this is a POST or GET request
+      type: "GET",
+      // The type of data we expect back
+      // dataType : "json",
+  })
+  // If the request succeeds
+  .done(function( data ) {
+  		fullUrl = domain + data.url;
+      //alert("Success!");
+      console.log(data);
+      $("#output").prepend("<img src=" + fullUrl + ">");
+  })
+  // If the request fails
+  .fail(function( xhr, status, errorThrown ) {
+      console.log(errorThrown + " Status:" + status );
+  });
+}
+
+$("#press-me").click(getAjax);
+
+$("#clear").click(function () {
+	$("#output p").remove()
+})
