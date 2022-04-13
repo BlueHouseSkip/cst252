@@ -29,5 +29,5 @@ function getAjax () {
 $("#press-me").click(getAjax);
 
 $("#clear").click(function () {
-	$("#output p").remove()
+	$("#output img").remove()
 })
